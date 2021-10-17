@@ -4,7 +4,9 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
 interface UiSelectOptionArgs {
-    setSelectedOption:(item:unknown)=>{}
+    setSelectedOptionIn:(item:unknown)=>{},
+    text:string,
+    value:string | number
 }
 
 export default class UiSelectOption extends Component<UiSelectOptionArgs> {
@@ -14,6 +16,7 @@ export default class UiSelectOption extends Component<UiSelectOptionArgs> {
     handleClick(e:MouseEvent){
         e.preventDefault();
         e.stopPropagation();
-        this.args.setSelectedOption(this)
+        // console.log( this.args)
+        this.args.setSelectedOptionIn(this);
     }
 }

@@ -4,10 +4,9 @@ import { createFocusTrap } from "focus-trap";
 export default modifier(function tpkFocusTrap(
   element: HTMLElement,
   _params,
-  { focusTrapOptions }: any = {},
+  {focusTrapOtions}:any
 ) {
-    console.log(element)
-  let trap = createFocusTrap(element, focusTrapOptions);
+  let trap = createFocusTrap(element, focusTrapOtions);
   trap.activate();
   return () => {
     trap.deactivate();

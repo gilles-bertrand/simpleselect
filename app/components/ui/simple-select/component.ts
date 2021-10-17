@@ -10,6 +10,10 @@ interface SelectOption {
     text:string;
     value:any
 }
+
+interface AdvancedMouseEvent extends MouseEvent{
+    path:[]
+}
 export default class UiSimpleSelect extends Component<UiSimpleSelectArgs> {
 
     @tracked isOpen = false;
@@ -32,20 +36,22 @@ export default class UiSimpleSelect extends Component<UiSimpleSelectArgs> {
 
     @action
     setSelectedOption(item:UiSelectOption){
+        console.log('oooooo')
         console.log(item)
     }
 
     @action
-    handleClickOutside() {
-    //   for (let i = 0; i < e.path?.length; i++) {
-    //     if (e.path[i] === this.buttonElement) {
-    //       return true;
-    //     }
-    //   }
-    console.log("this.handleClickOutside")
-  
+    handleClickOutside(e:AdvancedMouseEvent) {
+      for (let i = 0; i < e.path?.length; i++) {
+        if (e.path[i] === this.buttonElement) {
+          return true;
+        }
+      }
       this.closeOptions();
-  
       return true;
+    }
+    @action
+    registerButtonElement(element:HTMLElement){
+        this.buttonElement = element;
     }
 }

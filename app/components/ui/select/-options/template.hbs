@@ -3,7 +3,8 @@
     {{tpk-focus-trap focusTrapOtions=(hash allowOutsideClick=@clickOutside fallbackFocus=(concat '#' @guid))}}
     ...attributes>
     {{#each @options as |option| }}
-    <Ui::Select::-Option @text={{option.text}} @setSelectedOption={{this.setSelectedOption}} @value={{option.value}} />
+    <Ui::Select::-Option @text={{option.text}} @setSelectedOptionIn={{option.setSelectedOption}}
+        @value={{option.value}} />
     {{/each}}
 
 </ul>
